@@ -1,0 +1,101 @@
+{
+  "consent": {
+    "subscribed_statuses": ["SUBSCRIBED"],
+    "unsubscribed_statuses": ["UNSUBSCRIBED"]
+  },
+  "lists": [
+    {
+      "name": "All Wix Contacts",
+      "criteria": {
+        "all": [
+          {"field": "email", "is_empty": false},
+          {
+            "not": {
+              "field": "email",
+              "matches_regex": "@[^@]+\\.(local|domain)$"
+            }
+          }
+        ]
+      },
+      "consent": {
+        "subscribed_statuses": ["SUBSCRIBED", "NOT_SET"]
+      },
+      "type": "private",
+      "optin": "single",
+      "description": "Wix contacts with a usable email address."
+    },
+    {
+      "name": "All Wix Members",
+      "criteria": {
+        "all": [
+          {"field": "is_member", "equals": true},
+          {
+            "not": {
+              "field": "email",
+              "matches_regex": "@[^@]+\\.(local|domain)$"
+            }
+          }
+        ]
+      },
+      "consent": {
+        "subscribed_statuses": ["SUBSCRIBED", "NOT_SET"]
+      },
+      "type": "private",
+      "optin": "single",
+      "description": "Approved Wix members with a usable email address."
+    },
+    {
+      "name": "All Wix Paying Members",
+      "criteria": {
+        "all": [
+          {"field": "active_pricing_plan", "equals": true},
+          {
+            "not": {
+              "field": "email",
+              "matches_regex": "@[^@]+\\.(local|domain)$"
+            }
+          }
+        ]
+      },
+      "consent": {
+        "subscribed_statuses": ["SUBSCRIBED", "NOT_SET"]
+      },
+      "type": "private",
+      "optin": "single",
+      "description": "Contacts with an active Wix pricing plan and a usable email address."
+    },
+    {
+      "name": "All Wix Non-Members",
+      "criteria": {
+        "all": [
+          {"field": "is_member", "equals": false},
+          {
+            "not": {
+              "field": "email",
+              "matches_regex": "@[^@]+\\.(local|domain)$"
+            }
+          }
+        ]
+      },
+      "consent": {
+        "subscribed_statuses": ["SUBSCRIBED", "NOT_SET"]
+      },
+      "type": "private",
+      "optin": "single",
+      "description": "Contacts without an approved Wix member account and a usable email address."
+    },
+    {
+      "name": "Wix Invalid Email Address",
+      "criteria": {
+        "field": "email",
+        "matches_regex": "@[^@]+\\.(local|domain)$"
+      },
+      "consent": {
+        "subscribed_statuses": ["SUBSCRIBED", "NOT_SET"]
+      },
+      "type": "private",
+      "optin": "single",
+      "description": "Contacts whose email ends in .local or .domain."
+    }
+  ]
+}
