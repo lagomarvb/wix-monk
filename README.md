@@ -155,6 +155,9 @@ python3 -m unittest discover -s tests -v
 Optional development checks:
 
 ```bash
+# Required when running directly from a source checkout
+export PYTHONPATH=src
+
 python3 -m pip install -e '.[dev]'
 ruff check wix_monk tests
 pyflakes wix_monk tests
